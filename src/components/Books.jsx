@@ -23,7 +23,7 @@ function Books(){
     
 
     return(
-        <>
+        <div>
         {
             allBooks && (
                 allBooks.map((book)=>(
@@ -35,7 +35,7 @@ function Books(){
                 ))
             )
         }
-        </>
+        </div>
     )
 }
 

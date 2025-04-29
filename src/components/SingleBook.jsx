@@ -9,7 +9,6 @@ function SingleBook(){
 
     const { id } = useParams();
 
-
     useEffect(()=>{
         const getSingleBook = async() =>{
             try{
