@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom"
 
 function Books(){
     const [allBooks, setAllBooks] = useState([])
+    const [searchBook, setSearchBook] = useState("")
 
     const navigate = useNavigate()
     const handleClick = (book) => {
@@ -13,16 +14,35 @@ function Books(){
 
     useEffect(()=>{
         const getAllBooks = async() =>{
-            const res = await fetch("https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/books")
-            const data = await res.json()
-            setAllBooks(data)
-            console.log(data)
+            try{
+                const res = await fetch("https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/books")
+                const data = await res.json()
+                setAllBooks(data)
+                console.log(data)
+            } catch (err) {
+                console.error(err)
+            }
         }
         getAllBooks();
     }, [])
     
 
+    const filteredBooks = allBooks.filter((book) =>
+        book.title.toLowerCase().includes(searchBook.toLowerCase())
+    );
+
     return(
+        <>
+        <div>
+            <input 
+            type="text"
+            placeholder="Search book..."
+            value={searchBook}
+            onChange={(e) => setSearchBook(e.target.value)}
+            className="bookSearch"
+            />
+        </div>
+
         <div>
         {
             allBooks && (
@@ -36,6 +56,7 @@ function Books(){
             )
         }
         </div>
+        </>
     )
 }
 

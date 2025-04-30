@@ -1,14 +1,36 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import bookLogo from './assets/books.png'
 import Books from './components/Books'
-import { Routes, Route, Link } from 'react-router-dom'
 import SingleBook from './components/SingleBook'
 import NavBar from './components/Navigations'
 import Login from './components/Login'
 
 
 function App() {
-  const [token, setToken] = useState(null)
+  const [token, setToken] = useState(localStorage.getItem("token") || null);
+  const [user, setUser] = useState(localStorage.getItem("user") || null);
+
+  useEffect(()=> {
+    if (token) {
+      localStorage.setItem("token", token);
+    } else {
+      localStorage.removeItem("token");
+    }
+  }, [token]);
+
+  useEffect(()=>{
+    if (user) {
+      localStorage.setItem("user", JSON.stringify(user));
+    } else {
+      localStorage.removeItem("user");
+    }
+  }, [user]);
+
+  const logout = () => {
+    setToken(null);
+    setUser(null);
+  };
 
   return (
     <>
@@ -27,8 +49,9 @@ function App() {
     </nav>
 
     <Routes>
-      <Route path="/" element={<Books/>}/>
-      <Route path="/single/:id" element={<SingleBook />}/>
+      <Route path="/" element={<Books token={token}/>}/>
+      <Route path="/single/:id" element={<SingleBook token={token}/>}/>
+      <Route path="/login" element={<Login isLoggedIn={true} setToken={setToken} setUser={setUser}/>} />
     </Routes>
 
     </>
