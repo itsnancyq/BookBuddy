@@ -10,13 +10,13 @@ function Account({token}){
                 headers:{"Content-Type": "application/json", Authorization:`Bearer ${token}`}
             })
             const result = await response.json()
-            console.log(result)
+            // console.log(result)
             setUserInfo(result)
         }
         getMe()
     }, [])
 
-    
+
 
     return(
         <>

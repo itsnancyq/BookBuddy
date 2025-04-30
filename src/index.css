@@ -11,3 +11,64 @@ body {
 }
 
 /* Add your own custom styles here */
+
+.libraryContainer {
+  
+}
+
+.navBar {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.bookImg {
+  display: flex;
+  margin-right: 15px;
+  height: 300px;
+}
+
+.bookContainer{
+  display: flex;
+  flex-direction: column;
+  border:  1px solid black;
+  flex-direction: row;
+  margin: 0;
+  padding: 15px;
+  /* border-bottom: 1px solid black; */
+  background: #fff;
+  margin: 20px;
+}
+
+.bookAbout{
+  display: block;
+}
+
+.bookDetailButton{
+  display: block;
+  justify-content: end;
+  width: 100%;
+  padding: 10px 20px 10px;
+  margin-top: 60px;
+  border: 2px solid #20a9c4
+
+}
+
+.bookDetailButton:hover {
+  background-color: #20a9c4;
+  color: white;
+}
+
+.form{
+  display: block;
+}
+
+input{
+  padding: 4px;
+}
+
+.submitButton{
+  padding: 6px 12px;
+  background-color: black;
+  color: white;
+}

@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 
-function Books(){
+function Books({token}){
     const [allBooks, setAllBooks] = useState([])
     const [searchBook, setSearchBook] = useState("")
 
@@ -18,7 +18,7 @@ function Books(){
                 const res = await fetch("https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/books")
                 const data = await res.json()
                 setAllBooks(data)
-                console.log(data)
+                // console.log(data)
             } catch (err) {
                 console.error(err)
             }
@@ -26,10 +26,13 @@ function Books(){
         getAllBooks();
     }, [])
     
-
     const filteredBooks = allBooks.filter((book) =>
         book.title.toLowerCase().includes(searchBook.toLowerCase())
     );
+
+    const handleCheckout = async (book) => {
+        if (!token) return;
+    }
 
     return(
         <>
@@ -47,15 +50,27 @@ function Books(){
         {
             filteredBooks && (
                 filteredBooks.map((book)=>(
-                    <div key={book.id}>
-                        <h2>{book.title}</h2>
+                    <div key={book.id} className="bookContainer">
                         <img src={book.coverimage} className="bookImg"/>
-                        <button onClick={()=>handleClick(book)}>Details</button>
+                        <div className="bookAbout">
+                            <h2>{book.title}</h2>
+                            <h3>by {book.author}</h3>
+                            <button onClick={()=>handleClick(book)} className="bookDetailButton">Details</button>
+                        </div>
                     </div>
                 ))
             )
         }
         </div>
+
+        {token && (
+            <div>
+                <button onClick={() => handleCheckout(book)}
+                >
+                Reserve
+                </button>
+            </div>
+            )}
         </>
     )
 }
