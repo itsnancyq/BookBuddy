@@ -2,12 +2,28 @@
 
 import { Link } from "react-router-dom"
 
-function NavBar() {
+function NavBar({logout, token}) {
 
     return(
-        <nav>
+        <nav className="navBar">
             <Link to="/">Home</Link>
-            <Link to="/login">Login</Link>
+
+
+            {token ? (
+                <>
+                    <Link to="/account">Account</Link>
+                    <button onClick={logout} 
+                    className="navButton"
+                    >
+                    Logout
+                    </button>
+                </>
+            )  : (
+                <>
+                    <Link to="/login">Login</Link>
+                    <Link to="/register">Register</Link> 
+                </>
+            )}
         </nav>
     )
 }

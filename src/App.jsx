@@ -5,6 +5,7 @@ import Books from './components/Books'
 import SingleBook from './components/SingleBook'
 import NavBar from './components/Navigations'
 import Login from './components/Login'
+import Account from './components/Account'
 
 
 function App() {
@@ -42,16 +43,14 @@ function App() {
 
       <p>Don't forget to set up React Router to navigate between the different views of your single page application!</p> */}
 
-    <nav>
-      {
-        NavBar()
-      }
-    </nav>
+    <NavBar token={token} logout={logout} />
 
     <Routes>
       <Route path="/" element={<Books token={token}/>}/>
       <Route path="/single/:id" element={<SingleBook token={token}/>}/>
       <Route path="/login" element={<Login isLoggedIn={true} setToken={setToken} setUser={setUser}/>} />
+      <Route path="/register" element={<Login isLogin={false} setToken={setToken} setUser={setUser}/>}/>
+      <Route path="/account" element={<Account token={token} />}/>
     </Routes>
 
     </>

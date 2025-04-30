@@ -45,11 +45,11 @@ function Books(){
 
         <div>
         {
-            allBooks && (
-                allBooks.map((book)=>(
+            filteredBooks && (
+                filteredBooks.map((book)=>(
                     <div key={book.id}>
                         <h2>{book.title}</h2>
-                        <img src={book.coverimage} style={{height:'400px'}}/>
+                        <img src={book.coverimage} className="bookImg"/>
                         <button onClick={()=>handleClick(book)}>Details</button>
                     </div>
                 ))

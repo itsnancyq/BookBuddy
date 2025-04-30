@@ -52,13 +52,20 @@ function Login({ isLoggedIn, setToken, setUser }) {
                 <div>
                     <label>
                         Email:
-                            <input type="text" onChange={(event) => setEmail(event.target.value)} value={email} className="formEmail"/>
-                            
+                            <input 
+                            type="text" 
+                            onChange={(event) => setEmail(event.target.value)} 
+                            value={email} 
+                            className="formEmail"/>
                     </label>
 
                     <label>
                         Password:
-                            <input name="password" onChange={(event) => setPassword(event.target.value)} value={password} className="formPassword"/>
+                            <input 
+                            name="password" 
+                            onChange={(event) => setPassword(event.target.value)} minLength={3} 
+                            value={password} 
+                            className="formPassword"/>
                     </label>
                 </div>
 
