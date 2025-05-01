@@ -36,7 +36,7 @@ function Books({token}){
 
     return(
         <>
-        <div>
+        <div className="searchBar">
             <input 
             type="text"
             placeholder="Search book..."
@@ -61,7 +61,6 @@ function Books({token}){
                 ))
             )
         }
-        </div>
 
         {token && (
             <div>
@@ -71,6 +70,7 @@ function Books({token}){
                 </button>
             </div>
             )}
+            </div>
         </>
     )
 }

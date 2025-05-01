@@ -13,7 +13,7 @@ function NavBar({logout, token}) {
                 <>
                     <Link to="/account">Account</Link>
                     <button onClick={logout} 
-                    className="navButton"
+                    className="submitButton"
                     >
                     Logout
                     </button>
