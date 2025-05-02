@@ -24,15 +24,27 @@ function Books({token}){
             }
         }
         getAllBooks();
-    }, [])
+    }, []);
     
     const filteredBooks = allBooks.filter((book) =>
         book.title.toLowerCase().includes(searchBook.toLowerCase())
     );
 
-    const handleCheckout = async (book) => {
-        if (!token) return;
-    }
+    const reserveBook = async(bookId) => {
+        try{
+            const res = await fetch("https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/reservations", {
+                method: "POST",
+                headers: {"Content-Type": "application/json", 
+                    "Authorization": `Bearer ${token}`},
+                body: JSON.stringify({bookId:bookId})
+                })
+                const data = await res.json()
+
+        } catch (err) {
+                console.error(err)
+        }
+    };
+
 
     return(
         <>
@@ -56,21 +68,18 @@ function Books({token}){
                             <h2>{book.title}</h2>
                             <h3>by {book.author}</h3>
                             <button onClick={()=>handleClick(book)} className="bookDetailButton">Details</button>
+                            {token ? 
+                                <button onClick={() => reserveBook(book.id)} className="bookDetailButton">Reserve</button>
+                                : null
+                            } 
                         </div>
+
                     </div>
                 ))
             )
         }
 
-        {token && (
-            <div>
-                <button onClick={() => handleCheckout(book)}
-                >
-                Reserve
-                </button>
-            </div>
-            )}
-            </div>
+        </div>
         </>
     )
 }

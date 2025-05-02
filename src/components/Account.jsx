@@ -3,6 +3,8 @@ import { useState, useEffect } from "react"
 
 function Account({token}){
     const [userInfo, setUserInfo] = useState({})
+    const [seeReserve, setSeeReserve] = useState({})
+
 
     useEffect(()=>{
         const getMe = async () => {
@@ -16,7 +18,39 @@ function Account({token}){
         getMe()
     }, [])
 
+// Needs work
+    useEffect(()=>{
+        const getReserve = async () => {
+            try {
+                // const token = localStorage.getItem('token')
+                const response = await fetch ("https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/reservations", {
+                    headers:{"Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`}
+                    })
+                    const result = await response.json()
+                    setSeeReserve(result)
+                }  catch (err) {
+                    console.error(err)
+                }
+            }
+            getReserve()
+    }, [])
 
+    const returnBook = async () => {
+        try { 
+            const token = localStorage.getItem('token')
+            const res = await fetch (`https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/reservations/${id}`, {
+                method: "DELETE",
+                headers: {
+                    "Authorization": `Bearer ${token}`,
+                }
+            })
+            returnBook();   
+        } catch (err) {
+            console.error(err)
+        }
+    }
+    // 
 
     return(
         <>
@@ -31,6 +65,8 @@ function Account({token}){
                 </div>
             )
         }
+
+
         </>
     )
 }
