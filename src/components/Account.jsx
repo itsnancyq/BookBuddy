@@ -14,7 +14,6 @@ function Account({token}){
                     headers:{"Content-Type": "application/json", Authorization:`Bearer ${token}`}
                 })
                 const result = await response.json()
-                // console.log(result)
                 setUserInfo(result)
             } catch (err) {
                 console.error(err)
@@ -23,20 +22,20 @@ function Account({token}){
         getMe()
     }, [])
 
+    const getReserve = async () => {
+        try {
+            const response = await fetch ("https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/reservations", {
+                headers:{"Content-Type": "application/json",
+                Authorization: `Bearer ${token}`}
+            });
+            const result = await response.json();
+            setSeeReserve(result);
+        }  catch (err) {
+            console.error(err);
+        }
+    }
 
     useEffect(()=>{
-        const getReserve = async () => {
-            try {
-                const response = await fetch ("https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/reservations", {
-                    headers:{"Content-Type": "application/json",
-                    Authorization: `Bearer ${token}`}
-                });
-                const result = await response.json();
-                setSeeReserve(result);
-            }  catch (err) {
-                console.error(err);
-            }
-        }
         getReserve();
     }, []);
 
@@ -51,6 +50,7 @@ function Account({token}){
 
             if (res.ok) {
                 setSuccessMessage("Book returned successfully!")
+                getReserve();
             }
         } catch (err) {
             console.error(err)
@@ -94,18 +94,6 @@ function Account({token}){
             )
         }
         </div>
-
-
-        {
-        //     <div>
-        // {
-        //     seeReserve ? : <h1>no current books</h1>
-        // }
-        // </div> 
-
-        // trying to say if no books checked out then show message saying no current books
-
-        }
         </>
     )
 }

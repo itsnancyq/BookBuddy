@@ -17,10 +17,10 @@ function Books({token}){
         const getAllBooks = async() =>{
             try{
                 const res = await fetch("https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/books")
-                const data = await res.json()
-                setAllBooks(data)
+                const data = await res.json();
+                setAllBooks(data);
             } catch (err) {
-                console.error(err)
+                console.error(err);
             }
         }
         getAllBooks();
@@ -38,10 +38,10 @@ function Books({token}){
                     "Authorization": `Bearer ${token}`},
                 body: JSON.stringify({bookId:bookId})
                 })
-                const data = await res.json()
+                const data = await res.json();
 
         } catch (err) {
-                console.error(err)
+                console.error(err);
         }
     };
 
