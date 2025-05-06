@@ -4,12 +4,12 @@ import { useState, useEffect } from "react"
 function Account({token}){
     const [userInfo, setUserInfo] = useState({})
     const [seeReserve, setSeeReserve] = useState([])
+    const [successMessage, setSuccessMessage] =  useState("")
 
 
     useEffect(()=>{
         const getMe = async () => {
             try {
-
                 const response = await fetch("https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/users/me", {
                     headers:{"Content-Type": "application/json", Authorization:`Bearer ${token}`}
                 })
@@ -30,15 +30,15 @@ function Account({token}){
                 const response = await fetch ("https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/reservations", {
                     headers:{"Content-Type": "application/json",
                     Authorization: `Bearer ${token}`}
-                })
-                const result = await response.json()
-                setSeeReserve(result)
+                });
+                const result = await response.json();
+                setSeeReserve(result);
             }  catch (err) {
-                console.error(err)
+                console.error(err);
             }
         }
-        getReserve()
-    }, [])
+        getReserve();
+    }, []);
 
 
     const returnBook = async (id) => {
@@ -47,7 +47,11 @@ function Account({token}){
                 method: "DELETE",
                 headers: {
                     "Authorization": `Bearer ${token}`}
-            })
+            });
+
+            if (res.ok) {
+                setSuccessMessage("Book returned successfully!")
+            }
         } catch (err) {
             console.error(err)
         }
@@ -72,8 +76,9 @@ function Account({token}){
 
         <div className="checkedOutContainer">
             <h1 className="header">Checked Out</h1>
+            {successMessage && <div className="success">{successMessage}</div>}
         {
-            seeReserve && (
+            seeReserve && seeReserve.length > 0 ? (
                 seeReserve.map((book)=>(
                     <div key={book.id}>
                     <h2>{book.title}</h2>
@@ -84,6 +89,8 @@ function Account({token}){
                     </div>
                 </div>
                 ))
+            ) : (
+                <h2 className="reserveMsg">No books reserved</h2>
             )
         }
         </div>

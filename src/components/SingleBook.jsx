@@ -15,7 +15,6 @@ function SingleBook(){
             const res = await fetch(`https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/books/${id}`);
             const data = await res.json();
             setLoneBook(data);
-            // console.log(data)
 
         } catch(err){
             console.error(err);
@@ -27,10 +26,9 @@ function SingleBook(){
     
 
     return(
-    // add classnames to each attribute to help stlye l8r
         <>
-        <div className="backLink">
-            <Link to="/">Back</Link>
+        <div>
+            <Link to="/" className="backLink">Back</Link>
         </div>
 
         <div className="singleBookContainer">

@@ -12,15 +12,23 @@ body {
 
 /* Add your own custom styles here */
 
-.libraryContainer {
-  
-}
-
 .navBar {
   display: flex;
   justify-content:space-around;
   padding: 20px;
   font-size: 20px;
+  background-color: #20a9c4;
+  border: 1px solid #ccc;
+}
+
+.link {
+  padding: 6px 12px;
+  font-size: larger;
+  background-color: black;
+  color: white;
+  margin: 20px;
+  border: 1.875px;
+  text-decoration: none;
 }
 
 .bookImg {
@@ -34,21 +42,23 @@ body {
   flex-direction: column;
   border:  1px solid #ccc;
   flex-direction: row;
-  margin: 0;
   padding: 15px;
-  /* border-bottom: 1px solid black; */
+  border-bottom: 1px solid black;
   background: #fff;
   margin: 25px;
+  width: auto;
 }
 
 .bookAbout{
   display: block;
+  width: auto;
 }
 
 .bookDetailButton{
   display: block;
   justify-content: end;
-  width: 100%;
+  font-size: 15px;
+  width: 250px;
   padding: 10px 20px 10px;
   margin-top: 50px;
   border: 2px solid #20a9c4
@@ -103,9 +113,15 @@ input{
   flex-direction: row;
   margin: 0;
   padding: 15px;
-  /* border-bottom: 1px solid black; */
+  border-bottom: 1px solid black;
   background: #fff;
   margin: 20px;
+}
+
+.catalog {
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid black;
 }
 
 .bookSummary {
@@ -113,7 +129,16 @@ input{
 }
 
 .backLink{
-  margin-left: 20px;
+  display: flex;
+  justify-content: ;
+  margin: 20px 20px 20px 20px;
+  padding: 6px 12px;
+  font-size: larger;
+  background-color: black;
+  color: white;
+  border: 1.875px;
+  text-decoration: none;
+  width: 40px;
 }
 
 .authContainer {
@@ -127,7 +152,7 @@ input{
 }
 
 .accountContainer{
-  border:  1px solid #ccc;
+  border: 1px solid #ccc;
   flex-direction: row;
   margin: 0;
   padding: 15px;
@@ -147,3 +172,18 @@ input{
 .header {
     border-bottom: 1px solid black;
 }
+
+.reserveMsg {
+  color: #aaa;
+}
+
+.success {
+  color: green;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+@media screen and (max-width: 700px) {
+  body {
+    background-color: olive;
+  }}

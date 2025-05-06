@@ -58,6 +58,10 @@ function Books({token}){
             />
         </div>
 
+        <div className="catalog">
+            <h1>Browse Book Catalog:</h1>
+        </div>
+
         <div>
         {
             filteredBooks && (
