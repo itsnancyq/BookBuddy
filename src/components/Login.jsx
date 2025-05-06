@@ -49,24 +49,27 @@ function Login({ isLoggedIn, setToken, setUser }) {
             </h2>
 
             <form onSubmit={handleSubmit} className="form">
-                <div>
+                <div className="fillIn">
                     <label>
                         Email:
-                            <input 
-                            type="text" 
-                            onChange={(event) => setEmail(event.target.value)} 
-                            value={email} 
-                            className="formEmail"/>
-                    </label>
+                        </label>
+
+                    <input 
+                        type="text" 
+                        onChange={(event) => setEmail(event.target.value)} 
+                        value={email} 
+                        className="formEmail"
+                    />
 
                     <label>
                         Password:
-                            <input 
-                            name="password" 
-                            onChange={(event) => setPassword(event.target.value)} minLength={3} 
-                            value={password} 
-                            className="formPassword"/>
                     </label>
+                    <input 
+                        name="password" 
+                        onChange={(event) => setPassword(event.target.value)} minLength={3} 
+                        value={password} 
+                        className="formPassword"
+                    />
                 </div>
 
                 {error && <p className="">{error}</p>}

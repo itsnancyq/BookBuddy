@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 
+
 function Books({token}){
     const [allBooks, setAllBooks] = useState([])
     const [searchBook, setSearchBook] = useState("")
@@ -18,7 +19,6 @@ function Books({token}){
                 const res = await fetch("https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/books")
                 const data = await res.json()
                 setAllBooks(data)
-                // console.log(data)
             } catch (err) {
                 console.error(err)
             }
@@ -63,7 +63,14 @@ function Books({token}){
             filteredBooks && (
                 filteredBooks.map((book)=>(
                     <div key={book.id} className="bookContainer">
-                        <img src={book.coverimage} className="bookImg"/>
+                        <img 
+                            src={book.coverimage} 
+                            className="bookImg"
+                            onError={(e) => {
+                                e.target.onError = null;
+                                e.target.src = "/public/emptybooks.png";
+                            }}
+                        />
                         <div className="bookAbout">
                             <h2>{book.title}</h2>
                             <h3>by {book.author}</h3>

@@ -35,7 +35,14 @@ function SingleBook(){
 
         <div className="singleBookContainer">
 
-            <img src={loneBook.coverimage} className="bookImg"/>
+            <img
+                src={loneBook.coverimage} 
+                className="bookImg"
+                onError={(e) => {
+                    e.target.onError = null;
+                    e.target.src = "/public/emptytbooks.png"
+                }}
+            />
             <div>
                 <h1>{loneBook.title}</h1>
                 <h2>{loneBook.author}</h2>

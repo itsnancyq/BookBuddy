@@ -20,6 +20,7 @@ body {
   display: flex;
   justify-content:space-around;
   padding: 20px;
+  font-size: 20px;
 }
 
 .bookImg {
@@ -37,7 +38,7 @@ body {
   padding: 15px;
   /* border-bottom: 1px solid black; */
   background: #fff;
-  margin: 20px;
+  margin: 25px;
 }
 
 .bookAbout{
@@ -60,17 +61,33 @@ body {
 }
 
 .form{
-  display: block;
+display: flex;
+flex-direction: column;
+}
+
+label {
+  font-size: 20px;
+  margin: 5px;
+  padding: 10px;
 }
 
 input{
-  padding: 6px;
+  font-size: large;
+  padding: 10px;
+  margin: 20px;
+}
+
+.fillIn {
+  display: flex;
+  flex-direction: column;
 }
 
 .submitButton{
   padding: 6px 12px;
+  font-size: larger;
   background-color: black;
   color: white;
+  margin: 20px;
 }
 
 .searchBar{
@@ -97,4 +114,36 @@ input{
 
 .backLink{
   margin-left: 20px;
+}
+
+.authContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.authHeader {
+  font-size: 40px;
+  margin: 15px;
+}
+
+.accountContainer{
+  border:  1px solid #ccc;
+  flex-direction: row;
+  margin: 0;
+  padding: 15px;
+  background: #fff;
+  margin: 25px;
+}
+
+.checkedOutContainer {
+  border:  1px solid #ccc;
+  flex-direction: row;
+  margin: 0;
+  padding: 15px;
+  background: #fff;
+  margin: 20px;
+}
+
+.header {
+    border-bottom: 1px solid black;
 }

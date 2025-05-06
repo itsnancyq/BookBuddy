@@ -35,7 +35,7 @@ function App() {
 
   return (
     <div className='libraryContainer'>
-      <h1><img id='logo-image' src={bookLogo}/>Library App</h1>
+      <h1><img id='logo-image' src={bookLogo}/>Book Treasury</h1>
 
       {/* <p>Complete the React components needed to allow users to browse a library catalog, check out books, review their account, and return books that they've finished reading.</p>
 
