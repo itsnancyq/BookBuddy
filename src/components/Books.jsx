@@ -72,7 +72,7 @@ function Books({token}){
                             className="bookImg"
                             onError={(e) => {
                                 e.target.onError = null;
-                                e.target.src = "/public/emptybooks.png";
+                                e.target.src = "/emptybooks.png";
                             }}
                         />
                         <div className="bookAbout">

@@ -38,7 +38,7 @@ function SingleBook(){
                 className="bookImg"
                 onError={(e) => {
                     e.target.onError = null;
-                    e.target.src = "/public/emptytbooks.png"
+                    e.target.src = "/emptybooks.png"
                 }}
             />
             <div>
