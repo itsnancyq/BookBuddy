@@ -6,4 +6,9 @@ We are working with a new client who is wanting to design an online library for 
 
 Details on the API can be found 🔗 [here](https://fsa-book-buddy-b6e748d1380d.herokuapp.com/docs/)
 
+Note: This API is different in that it allows us to do more than request data. It also allows us to log in, and even check out books. To do this, recall CRUD and user authentication via JSON Web Tokens (JWT).
 
+
+Install dependencies: npm install
+
+Run the app with: npm run dev
